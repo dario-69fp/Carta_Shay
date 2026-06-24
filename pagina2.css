@@ -1,0 +1,282 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+
+    display:flex;
+    flex-direction: column;   /* 👈 clave */
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(
+        -45deg,
+        #ff00f2,
+        #6f00ff,
+        #ff0291,
+        #ff03f2
+    );
+
+    background-size:400% 400%;
+    animation:fondo 12s ease infinite;
+
+    font-family:Arial, sans-serif;
+}
+
+.contenido{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    text-align:center;
+    gap: 20px; /* espacio entre elementos */
+}
+
+h1{
+    font-size:2rem;
+    color:#ededed;
+    text-align: center;
+}
+
+.tulipan{
+    position:fixed;
+    top:-50px;
+    pointer-events:none;
+    user-select:none;
+    z-index:1;
+}
+
+@keyframes fondo{
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+}
+.p {
+    color:#ededed;
+    text-align: center;
+}
+
+.btn-carta{
+    margin-top: 30px;
+    padding: 15px 40px;
+
+    border: none;
+    border-radius: 50px;
+
+    background: rgba(255,255,255,0.9);
+
+    color: #d63384;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+
+    transition: all 0.3s ease;
+
+    position: relative;
+    z-index: 100;
+}
+
+.btn-carta:hover{
+    transform: translateY(-5px) scale(1.05);
+
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.btn-carta:active{
+    transform: scale(0.98);
+}
+
+.sobre{
+    position: relative;
+    width: 360px;
+    height: 240px;
+    margin: 20px auto;
+
+    background: #fff;
+    border-radius: 12px;
+
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+
+    overflow: hidden;
+}
+
+
+.tapa{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 120px;
+
+    background: #f8b4c4;
+
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+
+    transform-origin: top;
+
+    transform: rotateX(0deg);
+
+    transition: transform 0.8s ease;
+
+    z-index: 3;
+}
+
+.mensaje{
+    color: #444;
+    line-height: 1.6;
+    text-align: justify;
+    font-size: 16px;
+}
+
+.mensaje h3{
+    color:#d63384;
+    margin-bottom:10px;
+    text-align:center;
+}
+
+.mensaje p{
+    white-space: pre-line; /* 👈 respeta saltos de línea */
+}
+
+
+.sobre.abierto .mensaje{
+    max-height: 500px;     /* 👈 permite texto largo */
+    opacity: 1;
+    padding: 20px 15px;
+
+    transform: scaleY(1);
+}
+
+.sobre.abierto .tapa{
+    transform: rotateX(180deg);
+}
+
+.hoja{
+    position: absolute;
+    left: 5%;
+    bottom: 0;
+
+    width: 90%;
+
+    background: #fff;
+    border-radius: 8px;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+    padding: 20px;
+
+    transform: translateY(100%);
+    transition: transform 1s ease;
+
+    z-index: 2;
+
+    max-height: 300px;   /* 👈 evita romper pantalla */
+    overflow-y: auto;    /* 👈 scroll automático */
+}
+
+.sobre.abierto .hoja{
+    transform: translateY(-20px); /* 👈 sube como hoja */
+}
+
+.overlay{
+    position: fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background: rgba(0,0,0,0.6);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+
+    z-index: 999;
+}
+
+.carta-popup{
+    width: 400px;
+    max-height: 80vh;
+
+    background: #fffdf7;
+
+    border-radius: 12px;
+
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+
+    padding: 25px;
+
+    overflow-y: auto;
+
+    transform: scale(0.7);
+    opacity: 0;
+
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+@keyframes aparecer{
+    from{
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    to{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.carta-popup h3{
+    text-align:center;
+    color:#d63384;
+}
+
+.carta-popup p{
+    line-height:1.6;
+    color:#333;
+    text-align: justify;
+}
+
+.carta-popup button{
+    margin-top: 15px;
+    padding: 10px 20px;
+
+    border:none;
+    border-radius: 20px;
+
+    background:#d63384;
+    color:white;
+
+    cursor:pointer;
+}
+
+.overlay.mostrar{
+    opacity: 1;
+    visibility: visible;
+}
+
+.overlay.mostrar .carta-popup{
+    transform: scale(1);
+    opacity: 1;
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Sorpresa</title>
+    <style>
+     *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+
+    body{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        color: rgb(0, 0, 0);
+
+        background: linear-gradient(
+            -45deg,
+            #ec07e1,
+            #fe0575,
+            #cd05f5,
+            #a512fa
+        );
+
+        background-size: 400% 400%;
+        animation: fondoAnimado 10s ease infinite;
+    }
+
+    h1{
+        font-size: 3rem;
+        text-shadow: 0 0 10px rgba(79, 1, 247, 0.8);
+
+
+    }
+
+    @keyframes fondoAnimado{
+        0%{
+            background-position: 0% 50%;
+        }
+        50%{
+            background-position: 100% 50%;
+        }
+        100%{
+            background-position: 0% 50%;
+        }
+    }
+
+
+    #heartCanvas{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+
+    }
+
+    .contenedor{
+        position: relative;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-continuar{
+    position:fixed;
+    margin-top: 30px;
+    padding: 15px 35px;
+    border: none;
+    border-radius: 30px;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    background: white;
+    color: #ff4d6d;
+
+    transition: 0.3s;
+    }
+
+    .btn-continuar:hover{
+        transform: scale(1.1);
+    }
+
+
+    </style>
+</head>
+<body>
+    
+    <canvas id="heartCanvas"></canvas>
+    <div class="contenedor">
+        <h1>Existen mil maneras de expresar un <br>
+            sentimiento , para mi esta es una ...</h1><br><br><br><br><br><br><br><br><br><br>
+        <button class="btn-continuar" onclick="irPagina2()">
+        Continuar ❤️
+        </button>
+    </div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
